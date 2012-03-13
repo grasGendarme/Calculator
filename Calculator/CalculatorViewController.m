@@ -72,17 +72,18 @@
 
 - (IBAction)operationPressed:(id)sender 
 {
+
     if(self.userIsInTheMiddleOfTypingSomething)
     {
         [self enterPressed];
     }
-    NSString *operation = [sender currentTitle];
-    double result = [self.brain performOperation:operation];
+    double result = [self.brain performOperation:[sender currentTitle]];
     self.display.text = [NSString stringWithFormat:@"%g", result];
 }
 - (IBAction)clearButtonPressed 
 {
-    //des choses à faires
+    [self.brain clearOperandStack];
+    self.display.text = @"0";
 }
 
 
