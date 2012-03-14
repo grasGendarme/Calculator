@@ -70,6 +70,8 @@
     [self.brain pushOperand:[self.display.text doubleValue]];
     self.userIsInTheMiddleOfTypingSomething=NO;
     self.dotButton.enabled=YES;
+    self.history.text = [self.history.text stringByAppendingString:@" "];
+    self.history.text = [self.history.text stringByAppendingString:self.display.text];
 }
 
 - (IBAction)operationPressed:(id)sender 
@@ -81,11 +83,16 @@
     }
     double result = [self.brain performOperation:[sender currentTitle]];
     self.display.text = [NSString stringWithFormat:@"%g", result];
+    self.history.text = [self.history.text stringByAppendingString:@" "];
+    self.history.text = [self.history.text stringByAppendingString:[sender currentTitle]];
+    self.history.text = [self.history.text stringByAppendingString:@" "];
+    self.history.text = [self.history.text stringByAppendingString:self.display.text];
 }
 - (IBAction)clearButtonPressed 
 {
     [self.brain clearOperandStack];
     self.display.text = @"0";
+    self.history.text = @"";
 }
 
 
