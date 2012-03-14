@@ -81,12 +81,6 @@
         result = M_PI;
     }
     
-    else if ([operation isEqualToString:@"+/-"])
-    {
-        result = -[self popOperand];
-    }
-    
-    
     [self pushOperand:result];
     
     return result;
@@ -98,11 +92,6 @@
     [self.operandStack addObject:[NSNumber numberWithDouble:0.0]];
 }
 
-/*
--(NSString *) description
-{
-    return @"une jolie description, non?";
-}
-*/
+
 
 @end

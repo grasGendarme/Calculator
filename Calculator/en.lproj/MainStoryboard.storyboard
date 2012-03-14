@@ -344,21 +344,13 @@
                                     <action selector="clearButtonPressed" destination="2" eventType="touchUpInside" id="zA3-r0-gjO"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="ATe-b8-5jo">
-                                <rect key="frame" x="20" y="333" width="64" height="35"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Historique" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="xLZ-Qm-zmd">
+                                <rect key="frame" x="20" y="397" width="78" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="+ / -">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="operationPressed:" destination="2" eventType="touchUpInside" id="GCV-0f-FRX"/>
-                                </connections>
-                            </button>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -366,6 +358,7 @@
                         <outlet property="display" destination="TsT-wI-RXW" id="qmW-CJ-tck"/>
                         <outlet property="displayLabel" destination="TsT-wI-RXW" id="5aT-wt-NZK"/>
                         <outlet property="dotButton" destination="zYA-1D-0kS" id="oXC-wh-Krr"/>
+                        <outlet property="history" destination="xLZ-Qm-zmd" id="nid-Pn-mbS"/>
                     </connections>
                 </viewController>
             </objects>
@@ -379,6 +372,7 @@
                 <relationship kind="outlet" name="display" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="displayLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dotButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="history" candidateClass="UILabel"/>
             </relationships>
         </class>
     </classes>

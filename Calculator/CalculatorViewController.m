@@ -14,6 +14,7 @@
 @property (nonatomic, strong) CalculatorBrain *brain;
 
 @property (weak, nonatomic) IBOutlet UIButton *dotButton;
+@property (weak, nonatomic) IBOutlet UILabel *history;
 @property (weak, nonatomic) IBOutlet UILabel *displayLabel;
 
 @end
@@ -21,8 +22,9 @@
 @implementation CalculatorViewController
 @synthesize display = _display;
 @synthesize userIsInTheMiddleOfTypingSomething = _userIsInTheMiddleOfTypingSomething;
-@synthesize brain =_brain;
+@synthesize brain = _brain;
 @synthesize dotButton = _dotButton;
+@synthesize history = _history;
 @synthesize displayLabel = _displayLabel;
 
 
@@ -90,6 +92,7 @@
 - (void)viewDidUnload {
     [self setDotButton:nil];
     [self setDisplayLabel:nil];
+    [self setHistory:nil];
     [super viewDidUnload];
 }
 @end
