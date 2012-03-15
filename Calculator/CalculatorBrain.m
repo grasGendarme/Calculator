@@ -80,6 +80,9 @@
         } else if ([operation isEqualToString:@"pi"]){
             result = M_PI;
         }
+        else if([operation isEqualToString:@"√"]){
+            result = sqrt([self popOperandOffProgramStack:stack]);
+        }
     }
     return result;
 
