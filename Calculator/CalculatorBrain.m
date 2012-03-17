@@ -77,11 +77,16 @@
             result = cos([self popOperandOffProgramStack:stack]);
         } else if ([operation isEqualToString:@"tan"]){
             result = tan([self popOperandOffProgramStack:stack]);
-        } else if ([operation isEqualToString:@"pi"]){
+        } else if ([operation isEqualToString:@"π"]){
             result = M_PI;
-        }
-        else if([operation isEqualToString:@"√"]){
+        } else if([operation isEqualToString:@"√"]){
             result = sqrt([self popOperandOffProgramStack:stack]);
+        } else if ([operation isEqualToString:@"aSin"]){
+            result = asin([self popOperandOffProgramStack:stack]);
+        } else if ([operation isEqualToString:@"aCos"]){
+            result = acos([self popOperandOffProgramStack:stack]);
+        } else if ([operation isEqualToString:@"aTan"]){
+            result = atan([self popOperandOffProgramStack:stack]);
         }
     }
     return result;
