@@ -13,6 +13,7 @@
 -(void) clearOperandStack;
 -(void) pushOperand:(double)operand;
 -(double) performOperation:(NSString *) operation;
+-(NSString *) PiFraction:(double)number;
 
 @property (nonatomic, readonly) id program;
 

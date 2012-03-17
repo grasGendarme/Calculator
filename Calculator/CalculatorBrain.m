@@ -109,5 +109,13 @@
     [self.programStack addObject:[NSNumber numberWithDouble:0.0]];
 }
 
+-(NSString *) PiFraction:(double)number
+{
+    double result = number / M_PI; //result is the multiplier of PI
+    NSString *aPiFraction = [NSString stringWithFormat:@"%g * π", result];
+    // aPiFraction = [aPiFraction stringByAppendingString:@"π"];
+                             
+    return aPiFraction;
+}
 
 @end

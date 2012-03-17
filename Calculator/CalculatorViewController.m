@@ -20,6 +20,7 @@
 @end
 
 @implementation CalculatorViewController
+
 @synthesize display = _display;
 @synthesize userIsInTheMiddleOfTypingSomething = _userIsInTheMiddleOfTypingSomething;
 @synthesize brain = _brain;
@@ -94,6 +95,15 @@
     self.display.text = @"0";
     self.history.text = @"";
 }
+
+
+- (IBAction)PiFractionPressed 
+{
+    self.display.text = [self.brain PiFraction:[self.display.text doubleValue]];
+}
+
+
+
 
 
 - (void)viewDidUnload {
