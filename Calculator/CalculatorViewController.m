@@ -14,6 +14,7 @@
 @property (nonatomic, strong) CalculatorBrain *brain;
 
 @property (weak, nonatomic) IBOutlet UIButton *dotButton;
+@property (weak, nonatomic) IBOutlet UIButton *fractionOfPiButton;
 @property (weak, nonatomic) IBOutlet UILabel *history;
 @property (weak, nonatomic) IBOutlet UILabel *displayLabel;
 
@@ -24,7 +25,10 @@
 @synthesize display = _display;
 @synthesize userIsInTheMiddleOfTypingSomething = _userIsInTheMiddleOfTypingSomething;
 @synthesize brain = _brain;
+
 @synthesize dotButton = _dotButton;
+@synthesize fractionOfPiButton = _fractionOfPiButton;
+
 @synthesize history = _history;
 @synthesize displayLabel = _displayLabel;
 
@@ -77,7 +81,7 @@
 
 - (IBAction)operationPressed:(id)sender 
 {
-
+    self.fractionOfPiButton.enabled=YES;
     if(self.userIsInTheMiddleOfTypingSomething)
     {
         [self enterPressed];
@@ -92,6 +96,7 @@
 - (IBAction)clearButtonPressed 
 {
     [self.brain clearOperandStack];
+    self.fractionOfPiButton.enabled=YES;
     self.display.text = @"0";
     self.history.text = @"";
 }
@@ -100,6 +105,7 @@
 - (IBAction)PiFractionPressed 
 {
     self.display.text = [self.brain PiFraction:[self.display.text doubleValue]];
+    self.fractionOfPiButton.enabled=NO;
 }
 
 
@@ -110,6 +116,7 @@
     [self setDotButton:nil];
     [self setDisplayLabel:nil];
     [self setHistory:nil];
+    [self setFractionOfPiButton:nil];
     [super viewDidUnload];
 }
 @end

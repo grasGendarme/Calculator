@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11D50b" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1179"/>
     </dependencies>
@@ -315,7 +314,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="kAT-wv-Egl">
-                                <rect key="frame" x="198" y="311" width="52" height="35"/>
+                                <rect key="frame" x="198" y="312" width="52" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="π">
@@ -433,6 +432,7 @@
                         <outlet property="display" destination="TsT-wI-RXW" id="qmW-CJ-tck"/>
                         <outlet property="displayLabel" destination="TsT-wI-RXW" id="5aT-wt-NZK"/>
                         <outlet property="dotButton" destination="zYA-1D-0kS" id="oXC-wh-Krr"/>
+                        <outlet property="fractionOfPiButton" destination="jsb-PD-L6I" id="tJ4-7K-zfT"/>
                         <outlet property="history" destination="xLZ-Qm-zmd" id="nid-Pn-mbS"/>
                     </connections>
                 </viewController>
@@ -447,6 +447,7 @@
                 <relationship kind="outlet" name="display" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="displayLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="dotButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="fractionOfPiButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="history" candidateClass="UILabel"/>
             </relationships>
         </class>
