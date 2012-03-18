@@ -16,7 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *dotButton;
 @property (weak, nonatomic) IBOutlet UIButton *fractionOfPiButton;
 @property (weak, nonatomic) IBOutlet UILabel *history;
-@property (weak, nonatomic) IBOutlet UILabel *displayLabel;
 
 @end
 
@@ -30,7 +29,6 @@
 @synthesize fractionOfPiButton = _fractionOfPiButton;
 
 @synthesize history = _history;
-@synthesize displayLabel = _displayLabel;
 
 
 
@@ -75,8 +73,6 @@
     [self.brain pushOperand:[self.display.text doubleValue]];
     self.userIsInTheMiddleOfTypingSomething=NO;
     self.dotButton.enabled=YES;
-    self.history.text = [self.history.text stringByAppendingString:@" "];
-    self.history.text = [self.history.text stringByAppendingString:self.display.text];
 }
 
 - (IBAction)operationPressed:(id)sender 
@@ -88,10 +84,8 @@
     }
     double result = [self.brain performOperation:[sender currentTitle]];
     self.display.text = [NSString stringWithFormat:@"%g", result];
-    self.history.text = [self.history.text stringByAppendingString:@" "];
-    self.history.text = [self.history.text stringByAppendingString:[sender currentTitle]];
-    self.history.text = [self.history.text stringByAppendingString:@" "];
-    self.history.text = [self.history.text stringByAppendingString:self.display.text];
+    self.history.text = [CalculatorBrain descriptionOfProgram:[self.brain program]];
+
 }
 - (IBAction)clearButtonPressed 
 {
@@ -114,7 +108,6 @@
 
 - (void)viewDidUnload {
     [self setDotButton:nil];
-    [self setDisplayLabel:nil];
     [self setHistory:nil];
     [self setFractionOfPiButton:nil];
     [super viewDidUnload];

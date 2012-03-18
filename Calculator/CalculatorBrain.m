@@ -28,48 +28,6 @@
 {
     return [self.programStack copy];
 }
-/*
-+(NSString *)descriptionOfProgram:(id)program
-{
-    NSString *theDescription;
-    id topOfStack = [program lastObject]; //à passer en arg à la fonction descriptionOfTopOfStack
-    
-    
-    // j'écris une fonction helper qui donne le type du dernier objet du stack
-    
-    //description du stack d'une belle manière :
-
-     a. 3 E 5 E 6 E 7 + * - should display as 3 - (5 * (6 + 7)) or an even cleaner
-     output would be 3 - 5 * (6 + 7).
-     b. 3 E 5 + sqrt should display as sqrt(3 + 5).
-     c. 3 sqrt sqrt should display as sqrt(sqrt(3)).
-     d. 3 E 5 sqrt + should display as 3 + sqrt(5).
-     e. π r r * * should display as π * (r * r) or, even better, π * r * r.
-     f. a a * b b * + sqrt would be, at best, sqrt(a * a + b * b).
- 
- A implementer avec via une autre méthode récursive + des helpers pour savoir ce qu'il y sur le stack 
-
-    return theDescription;
-}
-
-+(id)descriptionOfTopOfStack:(id)topOfStack
-{
-    id whatItIs;
-    //si c'est une opération, il faut se réappeller suivant le nombre d'operands nécessaires et envoyer le résultat à afficher à descriptionOfProgram (un NSString *)
-    if([topOfStack isKindOfClass:[NSString class]]) 
-    {
-        //OMG c'est un opérateur (more checks needed)
-        //[self descriptionOfTopOfStack:
-    }
-    // et si c'est un nombre...
-    else if([topOfStack isKindOfClass:[NSNumber class]])
-    {
-        
-    }
-
-}
-*/
-
 
 +(id)popTopOfProgram:(id)program
 {
@@ -77,40 +35,47 @@
     if([program isKindOfClass:[NSArray class]]) //the argument has to be an array
     {
         topOfStack = [program lastObject];
-        [program removeLastObject];
-        
-        if([self isOperator:topOfStack])
-        {
-            if([self howManyOperandsFor:topOfStack]==2)
-            {
-                //créer un NSString contenant le vieux nombre qu'on poppe, le topOfStack, et le nouveau nombre
-                [self popTopOfProgram:program];
-            }
-    
-        }
-        else
-        {
-            
-        }
+        if(topOfStack) [program removeLastObject];
     }
-    return topOfStack;
+    return topOfStack; //the return is an operand or an operator
 }
-
-
-/*
-+(NSString *)descriptionOfTopOfProgram:(id)theThing
-{
-
-}
-*/
 
 // this class method returns a (NSString *) that describe the content of the stack, in a nice way.
 // e.g. 3 E 4 +  -->> (3 + 4) = 7
 +(NSString *)descriptionOfProgram:(id)program
 {
     NSString *theFullDescription;
+    id stack;
+    if ([program isKindOfClass:[NSArray class]]) {
+        stack = [program mutableCopy];
+    }
+    id topOfStack = [self popTopOfProgram:stack];
+    if([self isOperator:topOfStack])
+    {
+        //le sommet du stack est un opérateur: réappeller top of stack le nombre de fois nécessaires
+        //nombre donné par  +(int)howManyOperandsFor:(NSString *)operator
+        int numberOfRequiredOperands = [self howManyOperandsFor:topOfStack];
+        if(numberOfRequiredOperands == 2)
+        {
+            //fourrer popOff... , "TopOfStack", popOff dans theFullDescription (avec des parenthèses):
+            //TODO : parenthèses
+            [theFullDescription stringByAppendingString:[self popTopOfProgram:stack]];
+            [theFullDescription stringByAppendingString:topOfStack];
+            [theFullDescription stringByAppendingString:[self popTopOfProgram:stack]];
+        }
+        else if (numberOfRequiredOperands == 1)
+        {
+            //fourrer topOfStack,  popOff dans theFullDescirption
+            [theFullDescription stringByAppendingString:topOfStack];
+            [theFullDescription stringByAppendingString:[self popTopOfProgram:stack]];
+        }
+        else if (numberOfRequiredOperands)
+        {
+            //fourrer juste l'opérateur
+            [theFullDescription stringByAppendingString:topOfStack];
+        }
         
-
+    }
     return theFullDescription;
 }
 
